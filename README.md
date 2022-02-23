@@ -1,2 +1,2 @@
-# konoha-Trends-new-
+# konoha-Trends-new
 new applicatiom
