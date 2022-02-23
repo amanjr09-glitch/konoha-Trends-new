@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import '../sass/components/SignUp.css';
 import {FcGoogle} from "react-icons/fc";
 import { Link , Route} from 'react-router-dom';
-//import { authentication } from '../firebase/firebase';
-//import { createUserWithEmailAndPassword , GoogleAuthProvider , signInWithPopup } from "firebase/auth";
+import { authentication } from '../firebase/firebase';
+import { createUserWithEmailAndPassword , GoogleAuthProvider , signInWithPopup } from "firebase/auth";
 import { useHistory } from "react-router-dom";
+
 function SignUp() {
   const history = useHistory();
   const [firstName, setFirstName] = useState("");
