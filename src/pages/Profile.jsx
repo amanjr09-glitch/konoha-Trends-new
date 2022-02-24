@@ -1,8 +1,13 @@
 import React from 'react';
 import '../sass/components/Profile.css';
-
-
+import { authentication } from '../firebase/firebase';
+import { useHistory } from "react-router-dom";
 function Profile(){
+    const history = useHistory();
+    const doLogout = () => {
+        authentication.signOut();
+        history.push('/');
+    }
     return(
     <div class="maincontainer">
     <div class="container1">
@@ -31,7 +36,7 @@ function Profile(){
         <li>Submit Designs</li>
     </ul>
     
-    <button>logout</button>
+    <button onClick={doLogout}>logout</button>
     </div>
     </div>
     

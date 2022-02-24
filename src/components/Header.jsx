@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect,useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import logo from '../assets/images/logo-2.png'
-
+import { authentication } from '../firebase/firebase';
 const mainNav = [
     {
         display: "HOME",
@@ -17,10 +17,10 @@ const mainNav = [
         display: "CATEGORIES",
         path: "/Categories"
     },
-    {
+   /*  {
         display: "SIGN-UP",
-        path: "/SignUp"
-    }
+        path: "/sign-up"
+    } */
 ]
 
 const Header = () => {
@@ -42,6 +42,21 @@ const Header = () => {
             window.removeEventListener("scroll")
         };
     }, []);
+
+    const [isUserSignedIn,setUserSignedIn] = useState(false);
+
+    authentication.onAuthStateChanged((user) => {
+        console.log('user in auth listener',user)
+        if(user){
+
+        return setUserSignedIn(true);
+        }
+        setUserSignedIn(false);
+    });
+
+    const doLogout = () => {
+        authentication.signOut();
+    }
 
     const menuLeft = useRef(null)
 
@@ -76,6 +91,19 @@ const Header = () => {
                                 </div>
                             ))
                         }
+                        { isUserSignedIn ? null : 
+                        <div className="user-action" >
+                            <Link to='sign-up'>
+                                <span>SIGN UP</span>
+                            </Link>
+                        </div>
+                        }
+                        { !isUserSignedIn ? null : 
+                        <div className="user-action" onClick={doLogout} >
+                            <span>LOG OUT</span>
+                        </div>
+                        }
+                        
                     </div>
                     <div className="header__menu__right">
                         <div className="header__menu__item header__menu__right__item">
@@ -83,9 +111,19 @@ const Header = () => {
                                 <i className="bx bx-shopping-bag"></i>
                             </Link>
                         </div>
+
+                        { !isUserSignedIn ? null : 
                         <div className="header__menu__item header__menu__right__item">
+                            <Link to="/profile">
                             <i className="bx bx-user"></i>
+                            </Link>
+                            
                         </div>
+
+                        }
+
+
+                        
                     </div>
                 </div>
             </div>

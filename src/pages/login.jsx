@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import '../sass/compoonents/login.css'
+import '../sass/components/SignUp.scss';
 import SignUp from './SignUp';
 import { FcGoogle} from "react-icons/fc";
 import { useHistory } from "react-router-dom";
@@ -7,6 +7,7 @@ import { Link,Redirect } from 'react-router-dom';
 import { authentication } from '../firebase/firebase';
 import { signInWithEmailAndPassword , signInWithPopup , GoogleAuthProvider } from "firebase/auth";
 import {  } from 'firebase/auth';
+import Button from '../components/Button';
 function Login() {
     const history = useHistory();
     const [email, setEmail] = useState("");
@@ -43,21 +44,21 @@ function Login() {
         });
       }
     return (
-        <div class="container">
+        <div className="sign-up-container">
         <form >
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="password" placeholder="Password"  value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <div class="sign-up-container">
-                <button disabled={!validateForm()} onClick={loginUser}>Log In</button>
+            <div className="">
+                <Button backgroundColor="pink" disabled={!validateForm()} onClick={loginUser}>Log In</Button>
                 <div className="or">or</div>
-                <button onClick={signInWithGoogle}>
-                    <a href="#" class="social" > Login With  <FcGoogle class="fab fa fa-Google fa-2x"/></a>
-                </button>
+                <Button backgroundColor="pink" onClick={signInWithGoogle}>
+                    <a href="#" className="social" > Login With  <FcGoogle className="fab fa fa-Google fa-2x"/></a>
+                </Button>
             </div>
 
             <div className='forgot'>
                 <a href="#">Forgot your password?</a>
-                <div class="signup">
+                <div className="signup">
                     <a >
                         <Link to="/sign-up">Sign up</Link>
                     </a>

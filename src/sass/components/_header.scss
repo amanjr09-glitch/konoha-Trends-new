@@ -7,7 +7,7 @@
     z-index: 99;
     height: $header-height;
     transition: height 0.3s ease;
-
+    
     @include tablet {
         height: $header-tablet-height;
         box-shadow: $box-shadow;
@@ -17,6 +17,23 @@
         height: $header-mobile-height;
     }
 
+    .user-action {
+        margin-left : 39px;
+    }
+
+    @include mobile {
+        .user-action {
+            margin-left: unset;
+            margin-top: 20px;
+        }
+    }
+    
+    @include tablet {
+        .user-action{
+            margin-left: unset;
+            margin-top: 20px;
+        }
+    }
     .container {
         height: 100%;
     }

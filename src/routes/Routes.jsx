@@ -9,6 +9,7 @@ import Cart from '../pages/Cart'
 import Product from '../pages/Product'
 import Categories from '../pages/Categories';
 import SignUp from '../pages/SignUp';
+import Login from '../pages/login';
 //import SignUp from'../pages/SignUp.js'
 const Routes = () => {
     return (
@@ -20,6 +21,8 @@ const Routes = () => {
             <Route path='/Categories' component={Categories}/>
             <Route path='/profile' component={Profile}/>
             <Route path='/sign-up' component={SignUp}/>
+            <Route path='/log-in' component={Login}/>
+
            
         </Switch>
     )

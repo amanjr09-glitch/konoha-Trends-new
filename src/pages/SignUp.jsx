@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import '../sass/components/SignUp.css';
+import '../sass/components/SignUp.scss';
 import {FcGoogle} from "react-icons/fc";
 import { Link , Route} from 'react-router-dom';
 import { authentication } from '../firebase/firebase';
 import { createUserWithEmailAndPassword , GoogleAuthProvider , signInWithPopup } from "firebase/auth";
 import { useHistory } from "react-router-dom";
-
+import Button  from '../components/Button';
 function SignUp() {
   const history = useHistory();
   const [firstName, setFirstName] = useState("");
@@ -75,7 +75,7 @@ function SignUp() {
   }
 
   return (
-        <div className="container">
+        <div className="sign-up-container">
           <form onSubmit={register} >
 
             <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
@@ -85,15 +85,15 @@ function SignUp() {
             <input type="password" placeholder="Confirm Password" value={confirmPass} onChange={(e) => setConfirmPass(e.target.value)} required  />
   
             <div className="register-btn" >
-              <button type="submit">Register</button>
+              <Button backgroundColor="pink" type="submit">Sign Up</Button>
             </div>
             <br></br>
 
             <div className="or">or</div>
 
-            <button onClick={signInWithGoogle}>
-                <a className="social" > Register With <FcGoogle className="fab fa fa-Google fa-2x"/></a>
-            </button>
+            <Button backgroundColor="pink" onClick={signInWithGoogle}>
+                <a className="social" > Sign Up With <FcGoogle className="fab fa fa-Google fa-2x"/></a>
+            </Button>
             <br></br>
             <a ><Link to="/log-in">Already a customer?</Link></a>
           </form>
