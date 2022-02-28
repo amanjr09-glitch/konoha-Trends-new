@@ -19,6 +19,11 @@
 
     .user-action {
         margin-left : 39px;
+        
+    }
+    
+    .user-action :hover {
+        color: #ed2d2f;
     }
 
     @include mobile {
@@ -58,6 +63,11 @@
         img {
             height: 32px;
         }
+        @include mobile{
+            img {
+                height: 25px;
+            }
+        }
     }
 
     &__menu {
@@ -82,7 +92,7 @@
             color: #ed2d2f;
         }
 
-        &__item:hover {
+        &__item a:hover {
             color: #ed2d2f;
         }
 

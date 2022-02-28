@@ -1,3 +1,4 @@
+
 .footer {
     padding: 70px 0;
     box-shadow: $box-shadow;
@@ -10,6 +11,9 @@
     &__about {
         p {
             margin-bottom: 2rem;
+        }
+        &__about :hover {
+            color: #ed2d2f;
         }
     }
 
