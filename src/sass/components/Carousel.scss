@@ -1,0 +1,151 @@
+
+.slider {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+    background:linear-gradient(165deg, #fff 50%, var(--first-color) 50.1%);
+    padding-bottom: 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-bottom: 4%;
+    margin-top: 4% ;
+    padding:2rem 0;
+    width: 97%;
+    background: #fff;
+    box-shadow: 0 .3rem .5rem rgba(32, 32, 32, 0.3);
+   
+  }
+ 
+  
+  .slider .image {
+    max-width: 90%;
+    height: 100%;
+    display: center;
+    margin-left: 5%;
+  }
+  .image{
+    width: 90%;
+  }
+  
+  .right-arrow {
+    position: absolute;
+    top: 45%;
+    right: 35px;
+    font-size: 2rem;
+    color:#ed2d2f;
+  
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .left-arrow {
+    position: absolute;
+    top: 45%;
+    left: 35px;
+    font-size: 2rem;
+    color:#ed2d2f;
+    
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+  }
+  
+  .slide.active {
+    opacity: 1;
+    transition-duration: 1s;
+    /*transform: scale(1.08);*/
+  }
+  
+  @media screen and (max-width: 940px) {
+    .right-arrow {
+      position: absolute;
+      top: 45%;
+      right: 20px;
+      font-size: 2rem;
+      color: #000;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .left-arrow {
+      position: absolute;
+      top: 45%;
+      left: 20px;
+      font-size: 2rem;
+      color: #000;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+  }
+
+  @media screen and (max-width: 700px) {
+    .right-arrow {
+      position: absolute;
+      top: 45%;
+      right: 10px;
+      font-size: 2rem;
+      color: #000;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .left-arrow {
+      position: absolute;
+      top: 45%;
+      left: 10px;
+      font-size: 2rem;
+      color: #000;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+  }
+  
+  @media screen and (max-width: 500px) {
+    .right-arrow {
+      position: absolute;
+      top: 45%;
+      right: 5px;
+      font-size: 2rem;
+      color: #000;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    .left-arrow {
+      position: absolute;
+      top: 45%;
+      left: 5px;
+      font-size: 2rem;
+      color: #000;
+      z-index: 10;
+      cursor: pointer;
+      user-select: none;
+    }
+    @media screen and (max-width: 360px) {
+      .slider {
+        margin-bottom: 8%;
+      }
+      
+      }
+    
+  }

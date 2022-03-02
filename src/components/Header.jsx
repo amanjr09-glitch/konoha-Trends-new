@@ -98,11 +98,6 @@ const Header = () => {
                             </Link>
                         </div>
                         }
-                        { !isUserSignedIn ? null : 
-                        <div className="user-action" onClick={doLogout} >
-                            <span>LOG OUT</span>
-                        </div>
-                        }
                         
                     </div>
                     <div className="header__menu__right">
