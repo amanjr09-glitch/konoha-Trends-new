@@ -7,6 +7,7 @@ import Section, { SectionTitle, SectionBody } from '../components/Section'
 import PolicyCard from '../components/PolicyCard'
 import Grid from '../components/Grid'
 import ProductCard from '../components/ProductCard'
+import Carousel from '../components/Carousel'
 
 import Categories from '../pages/Categories'
 
@@ -19,18 +20,22 @@ import banner from '../assets/images/banner.png'
 const Home = () => {
     return (
         <Helmet title="Home page">
-            {/* hero slider */}
+            {/* hero slider 
             <HeroSlider
                 data={heroSliderData}
                 control={true}
                 auto={true}
                 timeOut={3000}
             />
-            {/* end hero slider */}
+             end hero slider */}
+
+            {/*start of carousel*/}
+            <Carousel />
+            {/*End of carousel*/}
 
             {/*categories*/}
             <Categories />
-           
+            {/*End of Categories*/}
             {/* best selling section */}
             <Section>
                 <SectionTitle>
