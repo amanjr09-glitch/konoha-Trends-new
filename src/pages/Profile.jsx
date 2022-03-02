@@ -1,7 +1,8 @@
-import React from 'react';
+import {React} from 'react';
 import '../sass/components/Profile.css';
 import { authentication } from '../firebase/firebase';
 import { useHistory } from "react-router-dom";
+import { useState } from 'react';
 
 
 function Profile(){
@@ -10,13 +11,26 @@ function Profile(){
         authentication.signOut();
         history.push('/');
     }
+
+    let userObj;
+
+    const [user,setUser] = useState(null);
+    authentication.onAuthStateChanged((user) => {
+        if(user){
+            console.log(user);
+            return setUser(user);
+        }
+        setUserSignedIn(false);
+    });
+
+
     return(
     <div class="maincontainer">
     <div class="container1">
     
     <div class="member">
-        <p id="name"><b>Madhu Sudan Singh</b></p>
-        <p id="mail">singhmadhusudan1998@gmail.com</p>
+        <p id="name"><b>{user ? user.displayName : "N/A"}</b></p>
+        <p id="mail">{user ? user.email : "N/A"}</p>
     </div>
     <div class="sidenav">
     
@@ -42,7 +56,7 @@ function Profile(){
         <div class="email">
             <form action=""/>
                 <label for="fname">Email</label>
-              <input type="email" id="Email" name="Email" /><br/>
+                <input type="email" id="Email" name="Email" value ={user ? user.email : ""} /><br/>
               
         </div>
 
