@@ -1,5 +1,5 @@
 import {React} from 'react';
-import '../sass/components/Profile.css';
+import '../sass/components/Profile.scss';
 import { authentication } from '../firebase/firebase';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
@@ -20,7 +20,7 @@ function Profile(){
             console.log(user);
             return setUser(user);
         }
-        setUserSignedIn(false);
+        {/*setUserSignedIn(false);*/}
     });
 
 

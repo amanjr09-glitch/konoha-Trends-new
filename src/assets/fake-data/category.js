@@ -22,6 +22,12 @@ const category = [
         categorySlug: "Casual"
 
     },
+    {
+        display: "Gaming",
+        categorySlug: "Gaming"
+
+    },
+    
 ]
 
 export default category

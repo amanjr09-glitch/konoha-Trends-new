@@ -84,7 +84,7 @@ const Footer = () => {
                     </div>
                     <div>
                         <div className="footer__title">
-                            Customer care
+                           Policy
                         </div>
                         <div className="footer__content">
                             {

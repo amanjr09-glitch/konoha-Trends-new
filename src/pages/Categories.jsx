@@ -1,6 +1,6 @@
 
 import React from 'react';
-import '../sass/components/Categories.css';
+import '../sass/components/Categories.scss';
 import CardItem from './CardItem';
 
 

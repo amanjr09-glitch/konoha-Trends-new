@@ -3,6 +3,7 @@
 
     @include mobile {
         flex-direction: column;
+        align-items: center;
     }
 
     &__images {
@@ -53,33 +54,41 @@
         }
 
         &__title {
-            font-size: 2.5rem;
-            font-weight: normal;
+            font-size: 3rem;
+            font-weight: 200px;
+            color: rgb(56, 51, 51);
+            font-style: bold;
+            border-bottom: 1px solid rgb(194, 181, 181);
+
         }
 
         &__item {
             margin-top: 2rem;
 
             &__price {
+                @include flex(cneter, center);
                 color: $main-color;
                 font-size: 2rem;
                 font-weight: 600;
             }
 
             &__title {
+                @include flex(center, center);                
                 font-size: 1.5rem;
                 font-weight: 600;
                 margin-bottom: 1rem;
+                align-items: center;
+               
             }
 
             &__list {
-                @include flex(center, flex-start);
+                @include flex(center, center);
 
                 &__item {
                     @include flex(center, center);
 
-                    width: 50px;
-                    height: 50px;
+                    width: 40px;
+                    height: 40px;
                     border-radius: 50%;
                     border: 2px solid $txt-second-color;
                     cursor: pointer;
@@ -99,8 +108,8 @@
                     }
 
                     .circle {
-                        width: 40px;
-                        height: 40px;
+                        width: 30px;
+                        height: 30px;
                         border-radius: 50%;
 
                         @include mobile {
@@ -117,21 +126,28 @@
             }
 
             &__quantity {
-                @include flex(flex-start, flex-start);
+                @include flex(center, center);
+
 
                 &__btn {
                     @include flex(center, center);
-                    width: 30px;
-                    height: 30px;
-                    border: 2px solid $txt-second-color;
+                    width: 20px;
+                    height: 20px;
+                    margin-top: 5px;
+                    border: 1px solid $txt-second-color;
+                    border-radius: 50%;
                     font-size: 1.5rem;
                     cursor: pointer;
+                    
                 }
 
                 &__input {
                     @include flex(center, center);
                     height: 30px;
-                    width: 90px;
+                    width: 30px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    border-radius: 50%;
                     font-size: 1.5rem;
                     border-top: 2px solid $txt-second-color;
                     border-bottom: 2px solid $txt-second-color;
@@ -139,8 +155,11 @@
             }
 
             button {
-                margin-right: 1rem;
+                margin-right: 2rem;
                 margin-bottom: 1rem;
+                font-size: 12px;
+                width: 125px;
+                height: 50px;
             }
         }
     }

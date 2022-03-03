@@ -135,12 +135,13 @@ const ProductView = props => {
                 <h1 className="product__info__title">{product.title}</h1>
                 <div className="product__info__item">
                     <span className="product__info__item__price">
-                        {numberWithCommas(product.price)}
+                    ₹{numberWithCommas(product.price)}
                     </span>
                 </div>
+               
                 <div className="product__info__item">
                     <div className="product__info__item__title">
-                    Color
+                   <b>COLOR</b>
                     </div>
                     <div className="product__info__item__list">
                         {
@@ -154,7 +155,7 @@ const ProductView = props => {
                 </div>
                 <div className="product__info__item">
                     <div className="product__info__item__title">
-                    Size
+                  <b>SIZE</b>
                     </div>
                     <div className="product__info__item__list">
                         {
@@ -170,7 +171,7 @@ const ProductView = props => {
                 </div>
                 <div className="product__info__item">
                     <div className="product__info__item__title">
-                       Quantity
+                      <b>QUANTITY</b>
                     </div>
                     <div className="product__info__item__quantity">
                         <div className="product__info__item__quantity__btn" onClick={() => updateQuantity('minus')}>
@@ -184,6 +185,7 @@ const ProductView = props => {
                         </div>
                     </div>
                 </div>
+                
                 <div className="product__info__item">
                     <Button onClick={() => addToCart()}>Add to Cart</Button>
                     <Button onClick={() => goToCart()}>Buy Now</Button>
