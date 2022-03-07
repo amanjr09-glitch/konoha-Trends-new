@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Helmet from '../components/Helmet'
@@ -15,9 +15,51 @@ import heroSliderData from '../assets/fake-data/hero-slider'
 import policy from '../assets/fake-data/policy'
 import productData from '../assets/fake-data/products'
 
-import banner from '../assets/images/banner.png'
+import banner from '../assets/images/banner.png';
+import {db} from '../firebase/firebase';
+import { collection, getDocs } from "firebase/firestore";
 
 const Home = () => {
+
+        const [topProducts,setTopProducts] = useState([]);
+        const [newArrival, setNewArrival] = useState([]);
+        const [popular,setPopular] = useState([]);
+ 
+        const newArrivalProductsSnapshot = getDocs(collection(db, "NewArrivalProducts"));
+        const topProductsSnapshot = getDocs(collection(db,'TopProducts'));
+        const popularProductsSnapshot = getDocs(collection(db,'PopularProducts'));
+
+        newArrivalProductsSnapshot.then((snapshot) => {
+            //console.log(snapshot.docs);
+            let newArrivalProducts = [];
+            snapshot.docs.forEach((product) => {
+                newArrivalProducts.push(product.data());
+            });
+            //setProducts(products);
+            setNewArrival(newArrivalProducts);
+        });
+
+        topProductsSnapshot.then((snapshot) => {
+            //console.log(snapshot.docs);
+            let topProducts = [];
+            snapshot.docs.forEach((product) => {
+                topProducts.push(product.data());
+            });
+            //setProducts(products);
+            setTopProducts(topProducts);
+        });
+
+        popularProductsSnapshot.then((snapshot) => {
+            //console.log(snapshot.docs);
+            let popularProducts = [];
+            snapshot.docs.forEach((product) => {
+                popularProducts.push(product.data());
+            });
+            //setProducts(products);
+            setPopular(popularProducts);
+        });
+
+
     return (
         <Helmet title="Home page">
             {/* hero slider 
@@ -49,7 +91,7 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(4).map((item, index) => (
+                            topProducts.map((item, index) => (
                                 <ProductCard
                                     key={index}
                                     img01={item.image01}
@@ -78,7 +120,7 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(8).map((item, index) => (
+                            newArrival.map((item, index) => (
                                 <ProductCard
                                     key={index}
                                     img01={item.image01}
@@ -109,7 +151,7 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(12).map((item, index) => (
+                            popular.map((item, index) => (
                                 <ProductCard
                                     key={index}
                                     img01={item.image01}

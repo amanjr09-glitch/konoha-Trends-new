@@ -21,6 +21,7 @@ function Profile(){
             return setUser(user);
         }
         {/*setUserSignedIn(false);*/}
+        setUser(null);
     });
 
 

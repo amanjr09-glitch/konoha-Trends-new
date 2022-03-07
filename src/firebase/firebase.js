@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app';
 import { getAuth } from 'firebase/auth'
-import { signInWithPopup , GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: "AIzaSyAWHbZZKsBcU9QOFPBmtEobzIl0sLkv1qo",
   authDomain: "konoha-sign-up.firebaseapp.com",
@@ -14,3 +14,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const authentication = getAuth(app);
+export const db = getFirestore(app);
+
