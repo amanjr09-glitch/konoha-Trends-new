@@ -10,7 +10,10 @@ import productData from '../assets/fake-data/products'
 
 const Product = props => {
 
-    const product = productData.getProductBySlug(props.match.params.slug)
+    //const product = productData.getProductBySlug(props.match.params.slug);
+
+    let allProducts = productData.getAllProducts();
+    const product = allProducts.find(e => e.slug === props.match.params.slug);
 
     const relatedProducts = productData.getProducts(8)
 

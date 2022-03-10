@@ -17,17 +17,20 @@ const ProductView = props => {
 
     let product = props.product
 
-    if (product === undefined) product = {
-        title: "",
-        price: '',
-        image01: null,
-        image02: null,
-        categorySlug: "",
-        colors: [],
-        slug: "",
-        size: [],
-        description: ""
-    }
+    console.log("product in productView",product);
+    if (product === undefined){
+        product = {
+            title: "",
+            price: '',
+            image01: null,
+            image02: null,
+            categorySlug: "",
+            color: [],
+            slug: "",
+            size: [],
+            description: ""
+        }
+    } 
 
     const [previewImg, setPreviewImg] = useState(product.image01)
 
@@ -151,7 +154,7 @@ const ProductView = props => {
                     </div>
                     <div className="product__info__item__list">
                         {
-                            product.colors.map((item, index) => (
+                            product.color.map((item, index) => (
                                 <div key={index} className={`product__info__item__list__item ${color === item ? 'active' : ''}`} onClick={() => setColor(item)}>
                                     <div className={`circle bg-${item}`}></div>
                                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import Helmet from '../components/Helmet'
@@ -13,7 +13,8 @@ import Categories from '../pages/Categories'
 
 import heroSliderData from '../assets/fake-data/hero-slider'
 import policy from '../assets/fake-data/policy'
-import productData from '../assets/fake-data/products'
+import productData from '../assets/fake-data/products';
+
 
 import banner from '../assets/images/banner.png';
 import {db} from '../firebase/firebase';
@@ -24,12 +25,39 @@ const Home = () => {
         const [topProducts,setTopProducts] = useState([]);
         const [newArrival, setNewArrival] = useState([]);
         const [popular,setPopular] = useState([]);
- 
+        const [loading, setLoading] = useState(false);
         const newArrivalProductsSnapshot = getDocs(collection(db, "NewArrivalProducts"));
         const topProductsSnapshot = getDocs(collection(db,'TopProducts'));
         const popularProductsSnapshot = getDocs(collection(db,'PopularProducts'));
 
-        newArrivalProductsSnapshot.then((snapshot) => {
+
+        useEffect(() => {
+            
+            const testApi = async () => {
+                
+                try {
+                    setLoading(true);
+                    const newArrivalProductsPromise = productData.getNewArrivalProducts();
+                    const topProductsPromise = productData.getTopProducts();
+                    const popularProducts = productData.getPopularProducts();
+
+                    const allPromise = await Promise.all([newArrivalProductsPromise,topProductsPromise,popularProducts]);
+                    
+                    /* setNewArrival(newArrivalProducts); */
+                    setNewArrival(allPromise[0]);
+                    setTopProducts(allPromise[1]);
+                    setPopular(allPromise[2]);
+                    setLoading(false);
+                } catch (err) {
+                    console.log(err);
+                    setLoading(false);
+                }
+            };
+
+            testApi();
+        }, []);
+
+        /* newArrivalProductsSnapshot.then((snapshot) => {
             //console.log(snapshot.docs);
             let newArrivalProducts = [];
             snapshot.docs.forEach((product) => {
@@ -37,19 +65,10 @@ const Home = () => {
             });
             //setProducts(products);
             setNewArrival(newArrivalProducts);
-        });
+        }); */
 
-        topProductsSnapshot.then((snapshot) => {
-            //console.log(snapshot.docs);
-            let topProducts = [];
-            snapshot.docs.forEach((product) => {
-                topProducts.push(product.data());
-            });
-            //setProducts(products);
-            setTopProducts(topProducts);
-        });
 
-        popularProductsSnapshot.then((snapshot) => {
+       /*  popularProductsSnapshot.then((snapshot) => {
             //console.log(snapshot.docs);
             let popularProducts = [];
             snapshot.docs.forEach((product) => {
@@ -57,7 +76,7 @@ const Home = () => {
             });
             //setProducts(products);
             setPopular(popularProducts);
-        });
+        }); */
 
 
     return (

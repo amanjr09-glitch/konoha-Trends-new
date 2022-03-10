@@ -1,3 +1,7 @@
+import {db} from '../../firebase/firebase';
+import { collection, getDocs } from "firebase/firestore";
+
+
 const product_01_image_01 = require('../images/products/product-01 (1).jpg').default
 const product_01_image_02 = require('../images/products/product-01 (2).jpg').default
 // const product_01_image_03 = require('../images/products/product-01 (3).jpg').default
@@ -34,6 +38,48 @@ const product_11_image_02 = require('../images/products/product-11 (2).jpg').def
 
 const product_12_image_01 = require('../images/products/product-12 (1).jpg').default
 const product_12_image_02 = require('../images/products/product-12 (2).jpg').default
+
+let newArrivalProductsCache = [];
+let topProductsCache = [];
+let popularProductCache = [];
+let allProducts = [];
+
+const getNewArrivalProducts  = () => {
+    return getDocs(collection(db, "NewArrivalProducts")).then(snapshot => {
+        let newArrivalProducts = [];
+        snapshot.docs.forEach((product) => {
+            newArrivalProducts.push(product.data());
+        });
+        newArrivalProductsCache = newArrivalProducts;
+        return newArrivalProducts;
+    });
+};
+
+const getAllProducts = () => {
+    return newArrivalProductsCache.concat(topProductsCache).concat(popularProductCache);
+};
+
+const getTopProducts = () => {
+    return getDocs(collection(db,'topproducts')).then(snapshot => {
+        let topProducts = [];
+        snapshot.docs.forEach((product) => {
+            topProducts.push(product.data());
+        });
+        topProductsCache = topProducts;
+        return topProducts;
+    });
+}
+
+const getPopularProducts = () => {
+    return getDocs(collection(db,'PopularProducts')).then(snapshot => {
+        let popularProducts = [];
+        snapshot.docs.forEach((product) => {
+            popularProducts.push(product.data());
+        });
+        popularProductCache = popularProducts;
+        return popularProducts;
+    });
+}
 
 const products = [
     {
@@ -236,7 +282,7 @@ const products = [
     // 18 products
 ]
 
-const getAllProducts = () => products
+/* const getAllProducts = () => products */
 
 const getProducts = (count) => {
     const max = products.length - count
@@ -268,7 +314,13 @@ const productData = {
     getAllProducts,
     getProducts,
     getProductBySlug,
-    getCartItemsInfo
+    getCartItemsInfo,
+    getNewArrivalProducts,
+    newArrivalProductsCache,
+    getTopProducts,
+    topProductsCache,
+    getPopularProducts,
+    popularProductCache
 }
 
 export default productData
