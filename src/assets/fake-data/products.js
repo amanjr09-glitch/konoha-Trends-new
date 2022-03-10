@@ -55,9 +55,11 @@ const getNewArrivalProducts  = () => {
     });
 };
 
-const getAllProducts = () => {
+const getAllArrayProducts = () => {
     return newArrivalProductsCache.concat(topProductsCache).concat(popularProductCache);
 };
+
+const getAllProducts = () => products
 
 const getTopProducts = () => {
     return getDocs(collection(db,'topproducts')).then(snapshot => {
@@ -320,7 +322,8 @@ const productData = {
     getTopProducts,
     topProductsCache,
     getPopularProducts,
-    popularProductCache
+    popularProductCache,
+    getAllArrayProducts
 }
 
 export default productData

@@ -18,7 +18,9 @@ const ProductViewModal = () => {
     const [product, setProduct] = useState(undefined)
 
     useEffect(() => {
-        setProduct(productData.getProductBySlug(productSlug))
+        let allProducts = productData.getAllArrayProducts();
+        const product = allProducts.find(e => e.slug === productSlug);
+        setProduct(product)
     }, [productSlug]);
 
     return (
