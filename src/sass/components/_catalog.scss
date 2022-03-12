@@ -1,6 +1,11 @@
 .catalog {
     @include flex(flex-start, flex-start);
+      padding: 0 50px;
 
+      @include mobile{
+          padding: 0 10px;
+      }
+      
     @include tablet {
         flex-direction: column;
     }
