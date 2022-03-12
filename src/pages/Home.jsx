@@ -8,7 +8,9 @@ import PolicyCard from '../components/PolicyCard'
 import Grid from '../components/Grid'
 import ProductCard from '../components/ProductCard'
 import Carousel from '../components/Carousel'
-
+import Carousel2 from '../components/Carousel2'
+import Carousel3 from '../components/Carousel3'
+import Carousel4 from '../components/Carousel4'
 import Categories from '../pages/Categories'
 
 import heroSliderData from '../assets/fake-data/hero-slider'
@@ -97,7 +99,8 @@ const Home = () => {
             {/*categories*/}
             <Categories />
             {/*End of Categories*/}
-            {/* best selling section */}
+           <Carousel2 />
+
             <Section>
                 <SectionTitle>
                     <b>TOP PRODUCTS</b>
@@ -125,7 +128,7 @@ const Home = () => {
                 </SectionBody>
             </Section>
             {/* end best selling section */}
-
+<Carousel3 />
             {/* new arrival section */}
             <Section>
                 <SectionTitle>
@@ -155,7 +158,7 @@ const Home = () => {
             </Section>
             {/* end new arrival section */}
             
-           
+           <Carousel4 />
 
             {/* popular product section */}
             <Section>
