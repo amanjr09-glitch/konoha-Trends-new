@@ -15,7 +15,7 @@ const Product = props => {
     let allProducts = productData.getAllArrayProducts();
     const product = allProducts.find(e => e.slug === props.match.params.slug);
 
-    const relatedProducts = productData.getProducts(8)
+    const relatedProducts = productData.getAllArrayProducts(8)
 
     React.useEffect(() => {
         window.scrollTo(0,0)

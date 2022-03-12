@@ -35,7 +35,7 @@ const Cart = () => {
                         Your {totalProducts} products in cart
                         </p>
                         <div className="cart__info__txt__price">
-                            <span>Price:</span> <span>{numberWithCommas(Number(totalPrice))}</span>
+                            <span>Price:</span> <span> ₹{numberWithCommas(Number(totalPrice))}</span>
                         </div>
                     </div>
                     <div className="cart__info__btn">
