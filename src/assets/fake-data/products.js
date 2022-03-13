@@ -42,6 +42,7 @@ const product_12_image_02 = require('../images/products/product-12 (2).jpg').def
 let newArrivalProductsCache = [];
 let topProductsCache = [];
 let popularProductCache = [];
+let normalProductsCache = [];
 let allProducts = [];
 
 const getNewArrivalProducts  = () => {
@@ -80,6 +81,17 @@ const getPopularProducts = () => {
         });
         popularProductCache = popularProducts;
         return popularProducts;
+    });
+}
+
+const getNormalProducts = () => {
+    return getDocs(collection(db,'NormalProducts')).then(snapshot => {
+        let normalProducts = [];
+        snapshot.docs.forEach((product) => {
+            normalProducts.push(product.data());
+        });
+        normalProductsCache = normalProducts;
+        return normalProducts;
     });
 }
 
@@ -323,7 +335,9 @@ const productData = {
     topProductsCache,
     getPopularProducts,
     popularProductCache,
-    getAllArrayProducts
+    getAllArrayProducts,
+    getNormalProducts,
+    normalProductsCache
 }
 
 export default productData

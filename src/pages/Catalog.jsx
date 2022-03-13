@@ -12,15 +12,46 @@ import InfinityList from '../components/InfinityList'
 
 const Catalog = () => {
 
+    const [products, setProducts] = useState([]);
+    const [isInitialRender, setIsInitialRender] = useState(true);
+    const [loading, setLoading] = useState(false);
+    let count = 0;
+    useEffect(() => {
+        
+        const testApi = async () => {
+            
+            try {
+                
+                
+                if(productData.normalProductsCache.length > 0){
+                    setProducts(productData.normalProductsCache);
+                }else{
+                    const normalProducts = await productData.getNormalProducts();
+                    setProducts(normalProducts);
+                   
+                }
+            } catch (err) {
+                console.log(err);
+                
+            }
+        };
+
+        testApi();
+    }, []);
+
+    const setNewProducts = (products) => {
+        setProducts(products);
+    }
+
     const initFilter = {
         category: [],
         color: [],
         size: []
     }
 
-    const productList = productData.getAllProducts()
+    //const productList = productData.getAllProducts()
 
-    const [products, setProducts] = useState(productList)
+    // [products, setProducts] = useState(productList)
 
     const [filter, setFilter] = useState(initFilter)
 
@@ -61,7 +92,7 @@ const Catalog = () => {
 
     const updateProducts = useCallback(
         () => {
-            let temp = productList
+            let temp = products
 
             if (filter.category.length > 0) {
                 temp = temp.filter(e => filter.category.includes(e.categorySlug))
@@ -83,7 +114,7 @@ const Catalog = () => {
 
             setProducts(temp)
         },
-        [filter, productList],
+        [filter, products],
     )
 
     useEffect(() => {
@@ -168,9 +199,9 @@ const Catalog = () => {
                     <Button size="sm" onClick={() => showHideFilter()}>Filter</Button>
                 </div>
                 <div className="catalog__content">
-                    <InfinityList
+                    {/* <InfinityList
                         data={products}
-                    />
+                    /> */}
                 </div>
             </div>
         </Helmet>

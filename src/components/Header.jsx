@@ -46,7 +46,7 @@ const Header = () => {
     const [isUserSignedIn,setUserSignedIn] = useState(false);
 
     authentication.onAuthStateChanged((user) => {
-        console.log('user in auth listener',user)
+        //console.log('user in auth listener',user)
         if(user){
 
         return setUserSignedIn(true);
